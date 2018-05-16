@@ -1,0 +1,92 @@
+# depslib dependency file v1.0
+1525997548 source:d:\santos\parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"cliente.h"
+	"publicacion.h"
+	"utn.h"
+
+1525990710 d:\santos\parcial\utn.h
+
+1525990710 source:d:\santos\parcial\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1525998236 source:d:\santos\parcial\publicacion.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"publicacion.h"
+	"utn.h"
+
+1525997548 d:\santos\parcial\publicacion.h
+
+1525995741 source:d:\santos\parcial\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"cliente.h"
+	"utn.h"
+
+1525993852 d:\santos\parcial\cliente.h
+
+1526498208 source:c:\users\liqui\desktop\parcial\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<conio.h>
+	"cliente.h"
+	"utn.h"
+
+1526495855 c:\users\liqui\desktop\parcial\cliente.h
+
+1525990712 c:\users\liqui\desktop\parcial\utn.h
+
+1526496843 source:c:\users\liqui\desktop\parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"cliente.h"
+	"publicacion.h"
+	"informes.h"
+	"utn.h"
+
+1526495855 c:\users\liqui\desktop\parcial\publicacion.h
+
+1526496908 source:c:\users\liqui\desktop\parcial\publicacion.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"cliente.h"
+	"publicacion.h"
+	"utn.h"
+
+1526492911 source:c:\users\liqui\desktop\parcial\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1526495855 source:c:\users\liqui\desktop\parcial\informes.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"cliente.h"
+	"publicacion.h"
+	"informes.h"
+	"utn.h"
+
+1526491560 c:\users\liqui\desktop\parcial\informes.h
+
