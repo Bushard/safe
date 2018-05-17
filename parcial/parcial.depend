@@ -37,7 +37,7 @@
 
 1525993852 d:\santos\parcial\cliente.h
 
-1526498208 source:c:\users\liqui\desktop\parcial\cliente.c
+1526538081 source:c:\users\liqui\desktop\parcial\cliente.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -50,7 +50,7 @@
 
 1525990712 c:\users\liqui\desktop\parcial\utn.h
 
-1526496843 source:c:\users\liqui\desktop\parcial\main.c
+1526538397 source:c:\users\liqui\desktop\parcial\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -62,7 +62,7 @@
 
 1526495855 c:\users\liqui\desktop\parcial\publicacion.h
 
-1526496908 source:c:\users\liqui\desktop\parcial\publicacion.c
+1526538692 source:c:\users\liqui\desktop\parcial\publicacion.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -78,7 +78,7 @@
 	<string.h>
 	"utn.h"
 
-1526495855 source:c:\users\liqui\desktop\parcial\informes.c
+1526575691 source:c:\users\liqui\desktop\parcial\informes.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>

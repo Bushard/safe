@@ -9,6 +9,14 @@
 #define PAUSADO 0
 #define ACTIVO 1
 
+/** \brief enumera la canntidad de publicaciones activas
+ *
+ * \param arrayPublicacion EPublicacion*
+ * \param limitePublicacion int
+ * \param idCliente int
+ * \return int contadorDe Activas
+ *
+ */
 int informe_cantidadPublicacionesActivas(EPublicacion* arrayPublicacion, int limitePublicacion, int idCliente)
 {
     int i;
@@ -24,6 +32,15 @@ int informe_cantidadPublicacionesActivas(EPublicacion* arrayPublicacion, int lim
     return contadorDeActivas;
 }
 
+/** \brief muestra los clientes con más avisos activos
+ *
+ * \param arrayCliente ECliente*
+ * \param limiteCliente int
+ * \param arrayPublicacion EPublicacion*
+ * \param limitePublicacion int
+ * \return int -1 si hay un error, un 0 si está todo OK
+ *
+ */
 int informe_clienteConMasAvisosActivos(ECliente* arrayCliente, int limiteCliente, EPublicacion* arrayPublicacion, int limitePublicacion)
 {
     int retorno = -1;
@@ -68,6 +85,14 @@ int informe_clienteConMasAvisosActivos(ECliente* arrayCliente, int limiteCliente
 }
 
 
+/** \brief enumera la cantidad de publicaciones pausadas
+ *
+ * \param arrayPublicacion EPublicacion*
+ * \param limitePublicacion int
+ * \param idCliente int
+ * \return int contadoredPausadas
+ *
+ */
 int informe_cantidadPublicacionesPausadas(EPublicacion* arrayPublicacion, int limitePublicacion, int idCliente)
 {
     int i;
@@ -83,6 +108,15 @@ int informe_cantidadPublicacionesPausadas(EPublicacion* arrayPublicacion, int li
     return contadorDePausadas;
 }
 
+/** \brief muestra al cliente con mas avisos pausados
+ *
+ * \param arrayCliente ECliente*
+ * \param limiteCliente int
+ * \param arrayPublicacion EPublicacion*
+ * \param limitePublicacion int
+ * \return int -1 si hay un error, un 0 si está todo OK
+ *
+ */
 int informe_clienteConMasAvisosPausados(ECliente* arrayCliente, int limiteCliente, EPublicacion* arrayPublicacion, int limitePublicacion)
 {
     int retorno = -1;
@@ -126,6 +160,14 @@ int informe_clienteConMasAvisosPausados(ECliente* arrayCliente, int limiteClient
     return retorno;
 }
 
+/** \brief cuenta la cantidad de publicaciones de cada cliente
+ *
+ * \param arrayPublicacion EPublicacion*
+ * \param limitePublicacion int
+ * \param idCliente int
+ * \return int contadorDePublicaciones
+ *
+ */
 int informe_cantidadPublicaciones(EPublicacion* arrayPublicacion, int limitePublicacion, int idCliente)
 {
     int i;
@@ -141,6 +183,15 @@ int informe_cantidadPublicaciones(EPublicacion* arrayPublicacion, int limitePubl
     return contadorDePublicaciones;
 }
 
+/** \brief muestra al cliente con más avisos
+ *
+ * \param arrayCliente ECliente*
+ * \param limiteCliente int
+ * \param arrayPublicacion EPublicacion*
+ * \param limitePublicacion int
+ * \return int -1 si hay un error, un 0 si está todo OK
+ *
+ */
 int informe_clienteConMasAvisos(ECliente* arrayCliente, int limiteCliente, EPublicacion* arrayPublicacion, int limitePublicacion)
 {
     int retorno = -1;
@@ -184,35 +235,43 @@ int informe_clienteConMasAvisos(ECliente* arrayCliente, int limiteCliente, EPubl
     return retorno;
 }
 
+
+/** \brief muestra la cantidad de publicaciones por rubro
+ *
+ * \param arrayPublicaciones EPublicacion*
+ * \param limitePublicaciones int
+ * \return int -1 si hay un error, un 0 si está todo OK
+ *
+ */
 int informe_cantidadDePublicacionesPorRubro(EPublicacion* arrayPublicaciones, int limitePublicaciones)
 {
     int retorno=-1;
     int auxRubro;
     int i;
-    int acumuladorDeRubro;
+    int contadorDeRubro=0;
     if(publicacion_verificarAlta(arrayPublicaciones,limitePublicaciones))
     {
         if(limitePublicaciones > 0 && arrayPublicaciones != NULL)
         {
-            if(!getValidInt("\nIngrese el numero de Rubro:\n1- Electro.\n2- Jardin.\n3- Hogar. ","\nNumero no valido",&auxRubro,1,3,2))
+            if(!getValidInt("\nIngrese el numero de Rubro:\n1- Electro.\n2- Jardin.\n3- Hogar.\nRubro: ","\nNumero no valido",&auxRubro,1,3,2))
             {
                 for(i=0;i<limitePublicaciones;i++)
                 {
                     if(arrayPublicaciones[i].rubro==auxRubro)
                     {
-                        acumuladorDeRubro++;
+                        contadorDeRubro++;
                     }
                 }
                 switch (auxRubro)
                 {
                 case 1:
-                    printf("El Rubro Electro tiene %d publicaciones activas",acumuladorDeRubro);
+                    printf("El Rubro Electro tiene %d publicaciones activas",contadorDeRubro);
                     break;
                 case 2:
-                    printf("El Rubro Jardineria tiene %d publicaciones activas",acumuladorDeRubro);
+                    printf("El Rubro Jardineria tiene %d publicaciones activas",contadorDeRubro);
                     break;
                 case 3:
-                    printf("El Rubro Hogar tiene %d publicaciones activas",acumuladorDeRubro);
+                    printf("El Rubro Hogar tiene %d publicaciones activas",contadorDeRubro);
                     break;
                 }
             }
@@ -226,180 +285,189 @@ int informe_cantidadDePublicacionesPorRubro(EPublicacion* arrayPublicaciones, in
     return retorno;
 }
 
+
+
+/** \brief muestra los rubros con mas y menos publicaciones activas
+ *
+ * \param arrayPublicaciones EPublicacion*
+ * \param limitePublicaciones int
+ * \return int -1 si hay un error, un 0 si está todo OK
+ *
+ */
 int informe_rubrosConMasYMenosActivas(EPublicacion* arrayPublicaciones, int limitePublicaciones)
 {
     int retorno=-1;
     int i;
-    int acumuladorElectro=0;
-    int acumuladorJardin=0;
-    int acumuladorHogar=0;
+    int contadorElectro=0;
+    int contadorJardin=0;
+    int contadorHogar=0;
+    int menor=999;
+    int mayor=0;
     if(publicacion_verificarAlta(arrayPublicaciones,limitePublicaciones))
     {
         if(limitePublicaciones>0 && arrayPublicaciones != NULL)
         {
-            retorno=0;
+        retorno =0;
             for(i=0;i<limitePublicaciones;i++)
             {
-                switch(arrayPublicaciones[i].rubro)
+                switch (arrayPublicaciones[i].rubro)
                 {
-                    case 1:
-                    {
-                        acumuladorElectro++;
-                        break;
-                    }
-                    case 2:
-                    {
-                        acumuladorJardin++;
-                        break;
-                    }
-                    case 3:
-                    {
-                        acumuladorHogar++;
-                        break;
-                    }
-
+                case 1:
+                    contadorElectro++;
+                    break;
+                case 2:
+                    contadorJardin++;
+                    break;
+                case 3:
+                    contadorHogar++;
+                    break;
                 }
             }
 
-            if(acumuladorElectro>acumuladorJardin && acumuladorElectro>acumuladorHogar)
+            if(contadorElectro>mayor);
+                mayor= contadorElectro;
+            if(contadorJardin > mayor)
+                mayor = contadorJardin;
+            if(contadorHogar > mayor)
+                mayor = contadorHogar;
+
+            printf("\nEl rubro con mas publicaciones activas es: ");
+
+            if(mayor == contadorElectro)
             {
-                printf("\nEl Rubro con mas publicaciones activas es : Electro \n");
+                printf("Electro ");
             }
-            else if(acumuladorJardin>acumuladorElectro && acumuladorJardin>acumuladorHogar)
+            if(mayor == contadorHogar)
             {
-                printf("\nEl Rubro con mas publicaciones activas es : Jardineria\n");
-            }
-            else if(acumuladorHogar>acumuladorElectro && acumuladorHogar>acumuladorJardin)
-            {
-                printf("\nEl Rubro con mas publicaciones activas es : Hogar\n");
-            }
-            else if (acumuladorElectro==acumuladorHogar && acumuladorElectro > acumuladorJardin)
-            {
-                printf("\nLos rubros con mas publicaciones activas son: Electro y Hogar");
-            }
-            else if (acumuladorElectro==acumuladorJardin && acumuladorElectro > acumuladorHogar)
-            {
-                printf("\nLos rubros con mas publicaciones activas son: Electro y Jardin");
-            }
-            else if (acumuladorJardin==acumuladorHogar && acumuladorJardin>acumuladorElectro)
-            {
-                printf("\nLos rubros con mas publicaciones activas son: Hogar y Jardin");
-            }
-            if(acumuladorElectro<acumuladorJardin && acumuladorElectro<acumuladorHogar)
-            {
-                printf("\nEl Rubro con menos publicaciones activas es : Electro \n");
-            }
-            else if(acumuladorJardin<acumuladorElectro && acumuladorJardin<acumuladorHogar)
-            {
-                printf("\nEl Rubro con menos publicaciones activas es : Jardineria\n");
-            }
-            else if(acumuladorHogar<acumuladorElectro && acumuladorHogar<acumuladorJardin)
-            {
-                printf("\nEl Rubro con menos publicaciones activas es : Hogar\n");
-            }
-            else if (acumuladorElectro==acumuladorJardin && acumuladorElectro < acumuladorHogar)
-            {
-                printf("\nLos rubros con menos publicaciones activas son: Electro y Jardin");
-            }
-            else if (acumuladorElectro==acumuladorHogar && acumuladorElectro < acumuladorJardin)
-            {
-                printf("\nLos rubros con menos publicaciones activas son: Electro y Hogar");
-            }
-            else if (acumuladorJardin==acumuladorHogar && acumuladorJardin < acumuladorElectro)
-            {
-                printf("\nLos rubros con menos publicaciones activas son: Hogar y Jardin");
+                printf("Hogar ");
             }
 
+            if(mayor == contadorJardin)
+            {
+                printf("Jardin ");
+            }
+            printf("con %d avisos\n",mayor);
+
+            if(contadorElectro<menor)
+               menor= contadorElectro;
+            if(contadorJardin < menor)
+                menor = contadorJardin;
+            if(contadorHogar < menor)
+                menor = contadorHogar;
+
+            printf("El rubro con menos publicaciones activas es: ");
+
+            if(menor == contadorElectro)
+                printf("Electro ");
+            if(menor == contadorHogar)
+                printf("hogar ");
+            if(menor == contadorJardin)
+                printf("Jardin ");
+            printf("\n");
 
         }
     }
     else
     {
-        printf("\nERROR. DEBE CARGAR UNA PUBLICACION PRIMERO.\n");
+        printf("\nERROR.DEBE CARGAR UNA PUBLICACION ANTES\n");
     }
     return retorno;
 }
 
 
 
+/** \brief hardcodea los usuarios y publicaciones
+ *
+ * \param arrayClientes ECliente*
+ * \param arrayPublicaciones EPublicacion*
+ * \return void
+ *
+ */
 void informe_hard(ECliente* arrayClientes, EPublicacion* arrayPublicaciones)
 {
     strcpy(arrayClientes[0].nombre,"German");
     strcpy(arrayClientes[0].apellido,"Santos");
-    strcpy(arrayClientes[0].cuit,"123445678910");
+    strcpy(arrayClientes[0].cuit,"12344567891");
     arrayClientes[0].isEmpty=0;
-    arrayClientes[0].idCliente=0;
+    arrayClientes[0].idCliente= proximoIdCliente();
     arrayPublicaciones[0].idCliente=0;
     arrayPublicaciones[0].estado=ACTIVO;
     arrayPublicaciones[0].isEmpty=0;
     arrayPublicaciones[0].rubro=1;
     strcpy(arrayPublicaciones[0].descripcion,"Snes");
-    arrayPublicaciones[0].idPublicacion=0;
+    arrayPublicaciones[0].idPublicacion=proximoIdPublicacion();
 
 
     strcpy(arrayClientes[1].nombre,"Marisa");
     strcpy(arrayClientes[1].apellido,"Ramirez");
-    strcpy(arrayClientes[1].cuit,"123445678910");
+    strcpy(arrayClientes[1].cuit,"12344577891");
     arrayClientes[1].isEmpty=0;
-    arrayClientes[1].idCliente=1;
-    arrayPublicaciones[1].idCliente=0;
+    arrayClientes[1].idCliente=proximoIdCliente();
+    arrayPublicaciones[1].idCliente=1;
     arrayPublicaciones[1].estado=ACTIVO;
     arrayPublicaciones[1].isEmpty=0;
     arrayPublicaciones[1].rubro=2;
     strcpy(arrayPublicaciones[1].descripcion,"Tierra");
-    arrayPublicaciones[1].idPublicacion=1;
+    arrayPublicaciones[1].idPublicacion=proximoIdPublicacion();
 
     strcpy(arrayClientes[2].nombre,"Luis");
     strcpy(arrayClientes[2].apellido,"Peranta");
-    strcpy(arrayClientes[2].cuit,"233445678910");
+    strcpy(arrayClientes[2].cuit,"23344567891");
     arrayClientes[2].isEmpty=0;
-    arrayClientes[2].idCliente=2;
-    arrayPublicaciones[2].idCliente=0;
+    arrayClientes[2].idCliente=proximoIdCliente();
+    arrayPublicaciones[2].idCliente=2;
     arrayPublicaciones[2].estado=ACTIVO;
     arrayPublicaciones[2].isEmpty=0;
     arrayPublicaciones[2].rubro=3;
     strcpy(arrayPublicaciones[2].descripcion,"Heladera");
-    arrayPublicaciones[2].idPublicacion=2;
+    arrayPublicaciones[2].idPublicacion=proximoIdPublicacion();
 
     strcpy(arrayClientes[3].nombre,"Milo");
     strcpy(arrayClientes[3].apellido,"Santos");
     strcpy(arrayClientes[3].cuit,"20528333434");
     arrayClientes[3].isEmpty=0;
-    arrayClientes[3].idCliente=3;
+    arrayClientes[3].idCliente=proximoIdCliente();
     arrayPublicaciones[3].idCliente=3;
     arrayPublicaciones[3].estado=ACTIVO;
     arrayPublicaciones[3].isEmpty=0;
     arrayPublicaciones[3].rubro=1;
     strcpy(arrayPublicaciones[3].descripcion,"Switch");
-    arrayPublicaciones[3].idPublicacion=3;
+    arrayPublicaciones[3].idPublicacion=proximoIdPublicacion();
 
     arrayPublicaciones[4].idCliente=3;
     arrayPublicaciones[4].estado=PAUSADO;
     arrayPublicaciones[4].isEmpty=0;
     arrayPublicaciones[4].rubro=2;
     strcpy(arrayPublicaciones[4].descripcion,"Planta");
-    arrayPublicaciones[4].idPublicacion=4;
+    arrayPublicaciones[4].idPublicacion=proximoIdPublicacion();
 
     arrayPublicaciones[5].idCliente=0;
     arrayPublicaciones[5].estado=ACTIVO;
     arrayPublicaciones[5].isEmpty=0;
     arrayPublicaciones[5].rubro=3;
     strcpy(arrayPublicaciones[5].descripcion,"Cocina");
-    arrayPublicaciones[5].idPublicacion=5;
+    arrayPublicaciones[5].idPublicacion=proximoIdPublicacion();
 
     arrayPublicaciones[6].idCliente=3;
     arrayPublicaciones[6].estado=PAUSADO;
     arrayPublicaciones[6].isEmpty=0;
-    arrayPublicaciones[6].rubro=3;
-    strcpy(arrayPublicaciones[6].descripcion,"Microondas");
-    arrayPublicaciones[6].idPublicacion=6;
+    arrayPublicaciones[6].rubro=1;
+    strcpy(arrayPublicaciones[6].descripcion,"Home theater");
+    arrayPublicaciones[6].idPublicacion=proximoIdPublicacion();
 
     arrayPublicaciones[7].idCliente=0;
     arrayPublicaciones[7].estado=ACTIVO;
     arrayPublicaciones[7].isEmpty=0;
     arrayPublicaciones[7].rubro=1;
     strcpy(arrayPublicaciones[7].descripcion,"Playstation");
-    arrayPublicaciones[7].idPublicacion=7;
+    arrayPublicaciones[7].idPublicacion=proximoIdPublicacion();
+
+    arrayPublicaciones[8].idCliente=0;
+    arrayPublicaciones[8].estado=ACTIVO;
+    arrayPublicaciones[8].isEmpty=0;
+    arrayPublicaciones[8].rubro=2;
+    strcpy(arrayPublicaciones[8].descripcion,"Bordeadora");
+    arrayPublicaciones[8].idPublicacion=proximoIdPublicacion();
 
 
 

@@ -390,7 +390,7 @@ int publicacion_mostrarPublicacionesConCuitDelCliente(ECliente* arrayCliente, in
         printf("\n*********************************************************************\n");
         for(i=0; i<limitePublicacion; i++)
         {
-            if(!arrayPublicaciones[i].isEmpty && arrayPublicaciones[i].estado)
+            if(!arrayPublicaciones[i].isEmpty && arrayPublicaciones[i].estado && !arrayCliente[i].isEmpty)
             {
                 printf("-ID: %d ",arrayPublicaciones[i].idPublicacion);
                 switch (arrayPublicaciones[i].rubro)

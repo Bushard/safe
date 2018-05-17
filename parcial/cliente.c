@@ -70,11 +70,11 @@ if(limiteCliente > 0 && arrayCliente != NULL)
         i = buscarLugarLibre(arrayCliente,limiteCliente);
         if(i >= 0)
         {
-            if(!getValidString("\nNombre? ","\nEso no es un nombre","\nEl maximo son 50 letras",auxNombre,51,2))
+            if(!getValidString("\nNombre del cliente?: ","\nEso no es un nombre","\nEl maximo son 50 letras",auxNombre,51,2))
             {
-                if(!getValidString("\nApellido? ", "\nApellido no valido","\nEl maximo son 50 letras",auxApellido,51,2))
+                if(!getValidString("\nApellido del cliente?:  ", "\nApellido no valido","\nEl maximo son 50 letras",auxApellido,51,2))
                 {
-                        if(!cliente_getCuit("Ingrese su CUIT: ","(solo numeros)\n",auxCuit))
+                        if(!cliente_getCuit("\nIngrese su CUIT: ","(solo numeros)\n",auxCuit))
                         {
                             retorno = 0;
                             strcpy(arrayCliente[i].nombre, auxNombre);
@@ -82,7 +82,9 @@ if(limiteCliente > 0 && arrayCliente != NULL)
                             strcpy(arrayCliente[i].cuit, auxCuit);
                             arrayCliente[i].idCliente = proximoIdCliente();
                             arrayCliente[i].isEmpty = 0;
-                            printf("\nDATOS CARGADOS\n");
+                            printf("\n****************");
+                            printf("\n*DATOS CARGADOS*\n");
+                            printf("****************\n");
 
                         }
                         else
